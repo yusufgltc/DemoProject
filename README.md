@@ -100,5 +100,9 @@ Recycler View <br/>
 Documentation <br/>
 
 ![1b](https://user-images.githubusercontent.com/62885850/107888426-3347a480-6f1d-11eb-957a-75a864873b4a.png)
-
+![2b](https://user-images.githubusercontent.com/62885850/107888501-a5b88480-6f1d-11eb-8663-80ccaa902898.png)
+![3b](https://user-images.githubusercontent.com/62885850/107888508-afda8300-6f1d-11eb-80d8-c8c90db1ece5.png)
+![5b](https://user-images.githubusercontent.com/62885850/107888513-b963eb00-6f1d-11eb-9f66-3b4718226a0f.png)
+![6b](https://user-images.githubusercontent.com/62885850/107888519-c2ed5300-6f1d-11eb-8b33-b29e8b858da1.png)
+![7b](https://user-images.githubusercontent.com/62885850/107888525-caacf780-6f1d-11eb-9ed4-1edaa8fdaa02.png)
 
