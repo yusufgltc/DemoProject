@@ -103,19 +103,19 @@ Documentation <br/>
 
 #### Negatif
 
-Çalışır bir uygulama çıkaramadım
-Uygulamanın yüzde 70 lik kısmı hazır
-Dizayn yapabilmek için vaktim yetmedi
-Tek başıma çıkardığım bir uygulama olduğunu için ekip çalışmanın önemini terimin son damlasına kadar hissettim :)
-Pop up a firebase den istenilen veri gelmiyor
-Cunsor ile seçim aracı doğru çalışmıyor
-Model yapısı ile yeni bir structure oluşturulabilir
+Çalışır bir uygulama çıkaramadım <br/>
+Uygulamanın yüzde 70 lik kısmı hazır <br/>
+Dizayn yapabilmek için vaktim yetmedi <br/>
+Tek başıma çıkardığım bir uygulama olduğunu için ekip çalışmanın önemini terimin son damlasına kadar hissettim :) <br/>
+Pop up a firebase den istenilen veri gelmiyor <br/>
+Cunsor ile seçim aracı doğru çalışmıyor <br/>
+Model yapısı ile yeni bir structure oluşturulabilir <br/>
 
 #### Pozitif
-Authentication kısmı istenilen şekilde hazır
-Ürün listesi istenilen şekilde geliyor
-Adaptör database'den besleniyor
-Ürün paylaşma kısmı istenilen şekilde çalışıyor
+Authentication kısmı istenilen şekilde hazır <br/>
+Ürün listesi istenilen şekilde geliyor <br/>
+Adaptör database'den besleniyor <br/>
+Ürün paylaşma kısmı istenilen şekilde çalışıyor <br/>
 
 
 
