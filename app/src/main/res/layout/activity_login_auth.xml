@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pinktoyellow"
+    tools:context=".Auth.LoginAuth">
+
+    <TextView
+        android:id="@+id/txtViewLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="sans-serif"
+        android:text="LOGIN"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_email_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_email_login"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="44dp"
+        android:background="@android:color/white"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_password_login"
+        app:layout_constraintStart_toStartOf="@+id/txt_password_login"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewLogin" />
+
+    <EditText
+        android:id="@+id/txt_password_login"
+        android:layout_width="284dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="21dp"
+        android:background="@android:color/white"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxForPassword"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxForPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txt_email_login" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="21dp"
+        android:text="Login"
+
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toTopOf="@+id/textViewBecomeMember"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewForgotPassword" />
+
+    <TextView
+        android:id="@+id/textViewBecomeMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:text="Not a member ?"
+        app:layout_constraintBottom_toTopOf="@+id/btn_singUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <Button
+        android:id="@+id/btn_singUp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="93dp"
+        android:text="sıng up"
+        app:backgroundTint="#E91E63"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBecomeMember" />
+
+    <CheckBox
+        android:id="@+id/checkBoxForPassword"
+        android:layout_width="149dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginBottom="26dp"
+        android:text="Show Password"
+        app:layout_constraintBottom_toTopOf="@+id/txtViewForgotPassword"
+        app:layout_constraintEnd_toEndOf="@+id/btn_singUp"
+        app:layout_constraintStart_toStartOf="@+id/txtViewForgotPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txt_password_login" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="53dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_singUp" />
+
+    <TextView
+        android:id="@+id/txtViewForgotPassword"
+        android:layout_width="116dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:text="Forgot Password?"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxForPassword" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
