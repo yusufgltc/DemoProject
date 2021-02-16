@@ -1,152 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pinktoyellow"
-    tools:context=".UploadProductActivity">
-
-    <TextView
-        android:id="@+id/txt_product_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="18dp"
-        android:text="Choose a category"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_product"
-        app:layout_constraintStart_toStartOf="@+id/spinner_product"
-        app:layout_constraintTop_toBottomOf="@+id/txtbox_product_description" />
-
-    <TextView
-        android:id="@+id/txt_product_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginLeft="37dp"
-        android:layout_marginBottom="26dp"
-        android:text="Description"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/txtbox_product_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar_product" />
-
-    <TextView
-        android:id="@+id/txt_product_quality"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="34dp"
-        android:text="Product Quality"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar_product"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtbox_product_title" />
-
+    tools:context=".Activity.UploadProductActivity"
+    android:orientation="vertical">
     <ImageView
-        android:id="@+id/imgView_product"
-        android:layout_width="75dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginLeft="168dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginBottom="34dp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_product_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-    <TextView
-        android:id="@+id/txt_product_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="11dp"
-        android:text="Title"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/txtbox_product_title"
-        app:layout_constraintStart_toStartOf="@+id/txtbox_product_title"
-        app:layout_constraintTop_toBottomOf="@+id/imgView_product" />
-
-    <EditText
-        android:id="@+id/txtbox_product_title"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/txt_product_quality"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_product_title" />
-
-    <RatingBar
-        android:id="@+id/ratingBar_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="37dp"
-        android:saveEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/txt_product_description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_product_quality"
-        android:numStars="5" />
-
-    <EditText
-        android:id="@+id/txtbox_product_description"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="26dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/txt_product_category"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_product_description" />
-
-    <Spinner
-        android:id="@+id/spinner_product"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_share_product"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_product_category"
-        android:spinnerMode="dropdown" />
-
-    <Button
-        android:id="@+id/btn_share_product"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="41dp"
-        android:layout_marginBottom="16dp"
-        android:text="Button"
-        app:backgroundTint="#FF5722"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_product" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/imgView_backTo_upload"
+        android:layout_width="25dp"
+        android:layout_height="50dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+    <ImageView
+        android:id="@+id/imageView_product_upload"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"/>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edtText_product_title_upload"
+            android:drawableLeft="@drawable/ic_baseline_title_24"
+            android:drawablePadding="10dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="Title"/>
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:text="Quality"
+            android:drawableLeft="@drawable/ic_baseline_device_thermostat_24"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp"
+            android:textColor="#fff"
+            android:gravity="left"/>
+        <RatingBar
+            android:id="@+id/ratingBar_product_quality_upload"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:numStars="5"
+            android:saveEnabled="true" />
+        <MultiAutoCompleteTextView
+            android:id="@+id/edtText_product_description_upload"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:drawableLeft="@drawable/ic_baseline_description_24"
+            android:drawablePadding="10dp"
+            android:hint="Description" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:text="Categories"
+            android:drawableLeft="@drawable/ic_baseline_category_24"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp"
+            android:textColor="#fff"
+            android:gravity="left"/>
+        <Spinner
+            android:id="@+id/spinner_product_category"
+            android:layout_marginTop="20dp"
+            android:spinnerMode="dropdown"
+            android:layout_width="300dp"
+            android:layout_height="50dp"/>
+        <Button
+            android:id="@+id/btn_signUp"
+            android:layout_marginTop="40dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style"
+            android:drawableRight="@drawable/ic_baseline_ios_share_24"
+            android:text="Share Product"
+            android:textColor="#fff"/>
+        <ProgressBar
+            android:id="@+id/progressBarSign"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="25dp"
+            android:paddingTop="0dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+</LinearLayout>

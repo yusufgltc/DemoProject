@@ -1,207 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pinktoyellow"
-    tools:context=".Auth.SingAuth">
-
-    <EditText
-        android:id="@+id/txt_user_departmant_singUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="29dp"
-        android:ems="10"
-        android:hint="Departmant"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:inputType="textPersonName"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_user_bio_singUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txt_user_university_singUp"
-        app:layout_constraintTop_toBottomOf="@+id/txt_password_singUp"
-        tools:ignore="MissingConstraints"
-        android:gravity="center_horizontal" />
-
-    <EditText
-        android:id="@+id/txt_user_university_singUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:ems="10"
-        android:hint="University"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:inputType="textPersonName"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txt_user_departmant_singUp"
-        app:layout_constraintEnd_toStartOf="@+id/txt_user_departmant_singUp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        android:gravity="center_horizontal" />
+    tools:context=".Auth.SingAuth"
+    android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imgView_user_singUp"
-        android:layout_width="75dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_surname_singUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        tools:ignore="MissingConstraints"></ImageView>
+        android:id="@+id/imgView_backTo_sign"
+        android:layout_width="25dp"
+        android:layout_height="50dp"
+        android:layout_gravity="left"
+        android:paddingLeft="10dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
-    <EditText
-        android:id="@+id/txt_name_singUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:ems="10"
-        android:hint="Name"
-        android:textAlignment="center"
-        android:background="@android:color/white"
-        android:inputType="textPersonName"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txt_surname_singUp"
-        app:layout_constraintEnd_toStartOf="@+id/txt_surname_singUp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center_horizontal" />
+    <ImageView
+        android:id="@+id/imgView_user_img_sign"
+        android:src="@drawable/ic_baseline_add_photo_alternate_24"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"/>
 
-    <EditText
-        android:id="@+id/txt_surname_singUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:hint="Surname"
-        android:textAlignment="center"
-        android:background="@color/white"
-        android:inputType="textPersonName"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_username_singUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txt_name_singUp"
-        app:layout_constraintTop_toBottomOf="@+id/imgView_user_singUp"
-        android:gravity="center_horizontal" />
+    <LinearLayout
+        android:id="@+id/l2"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edtText_user_names_sign"
+            android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+            android:drawablePadding="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="First and second name"/>
+        <EditText
+            android:id="@+id/edtText_user_email_sign"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:drawablePadding="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="Email" />
+        <EditText
+            android:id="@+id/edtText_user_university_sign"
+            android:drawableLeft="@drawable/ic_baseline_school_24"
+            android:drawablePadding="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="University" />
+        <EditText
+            android:id="@+id/edtText_user_departmant_sign"
+            android:drawableLeft="@drawable/ic_baseline_architecture_24"
+            android:drawablePadding="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="Departmant"/>
 
-    <EditText
-        android:id="@+id/txt_password_singUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
-        android:layout_marginBottom="48dp"
-        android:ems="10"
-        android:hint="Password"
-        android:textAlignment="center"
-        android:background="@color/white"
+        <MultiAutoCompleteTextView
+            android:id="@+id/edtText_user_bio_sign"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:drawableLeft="@drawable/ic_baseline_badge_24"
+            android:drawablePadding="10dp"
+            android:hint="Bio" />
 
-        android:inputType="textPassword"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_user_departmant_singUp"
-        app:layout_constraintStart_toStartOf="@+id/txt_email_singUp"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email_singUp"
-        tools:ignore="MissingConstraints"
-        android:gravity="center_horizontal" />
+        <EditText
+            android:id="@+id/edtText_user_password_sign"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"/>
 
-    <EditText
-        android:id="@+id/txt_username_singUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:hint="Username"
-        android:textAlignment="center"
-        android:background="@color/white"
-        android:inputType="textPersonName"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_email_singUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_surname_singUp"
-        android:gravity="center_horizontal" />
+        <Button
+            android:id="@+id/btn_signUp"
+            android:layout_marginTop="40dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style"
+            android:drawableRight="@drawable/ic_baseline_send_24"
+            android:text="Sign Up"
+            android:textColor="#fff"/>
 
-    <Button
-        android:id="@+id/singUpBtnCreateAccount"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="3dp"
-        android:backgroundTint="#E91E63"
-        android:text="SIGN UP"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="30sp"
-        app:backgroundTint="#FFFFFF"
-        app:iconTint="#1E0402"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_user_bio_singUp" />
+        <ProgressBar
+            android:visibility="invisible"
+            android:paddingTop="0dp"
+            android:id="@+id/progressBarSign"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/singUpBtnCreateAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/txt_email_singUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/txt_password_singUp"
-        app:layout_constraintEnd_toEndOf="@+id/txt_username_singUp"
-        app:layout_constraintTop_toBottomOf="@+id/txt_username_singUp"
-        android:gravity="center_horizontal" />
-
-    <EditText
-        android:id="@+id/txt_user_bio_singUp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginLeft="65dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginRight="65dp"
-        android:layout_marginBottom="35dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="BIO"
-        android:background="@color/white"
-        android:textAlignment="center"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/singUpBtnCreateAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_user_departmant_singUp"
-        tools:ignore="MissingConstraints,RtlCompat" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,139 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pinktoyellow"
-    tools:context=".Auth.LoginAuth">
+    tools:context=".Auth.LoginAuth"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtViewLogin"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:layout_marginBottom="25dp"
-        android:fontFamily="sans-serif"
-        android:text="LOGIN"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txt_email_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="50dp"
+        android:background="@color/colorPrimaryDark">
 
-    <EditText
-        android:id="@+id/txt_email_login"
-        android:layout_width="280dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="44dp"
-        android:background="@android:color/white"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_password_login"
-        app:layout_constraintStart_toStartOf="@+id/txt_password_login"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewLogin" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:textColor="#fff"
+            android:text="EduShare"/>
+        
+        <TextView
+            android:id="@+id/txtView_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque blandit, turpis suscipit dapibus mattis, lorem enim condimentum est, ac condimentum justo turpis eu nunc. "
+            android:textSize="15sp"
+            android:layout_marginTop="25dp"/>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp"
+            android:gravity="center">
 
-    <EditText
-        android:id="@+id/txt_password_login"
-        android:layout_width="284dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="21dp"
-        android:background="@android:color/white"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkBoxForPassword"
-        app:layout_constraintEnd_toEndOf="@+id/checkBoxForPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email_login" />
+            <Button
+                android:id="@+id/btn_learn_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_style"
+                android:text="Learn more"
+                android:textColor="#fff" />
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="21dp"
-        android:text="Login"
+            <Button
+                android:id="@+id/btn_join_us"
+                android:layout_margin="10dp"
+                android:textColor="#fff"
+                android:background="@drawable/button_style2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Join us"/>
+            </LinearLayout>
 
-        app:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toTopOf="@+id/textViewBecomeMember"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewForgotPassword" />
 
-    <TextView
-        android:id="@+id/textViewBecomeMember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
-        android:text="Not a member ?"
-        app:layout_constraintBottom_toTopOf="@+id/btn_singUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+</LinearLayout>
 
-    <Button
-        android:id="@+id/btn_singUp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_marginBottom="93dp"
-        android:text="sıng up"
-        app:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toTopOf="@+id/progressBarLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBecomeMember" />
+    <LinearLayout
+        android:id="@+id/l2"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edtText_userEmail_login"
+            android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+            android:drawablePadding="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="E-Mail"/>
+        <EditText
+            android:id="@+id/edtText_password_login"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"/>
 
-    <CheckBox
-        android:id="@+id/checkBoxForPassword"
-        android:layout_width="149dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginRight="47dp"
-        android:layout_marginBottom="26dp"
-        android:text="Show Password"
-        app:layout_constraintBottom_toTopOf="@+id/txtViewForgotPassword"
-        app:layout_constraintEnd_toEndOf="@+id/btn_singUp"
-        app:layout_constraintStart_toStartOf="@+id/txtViewForgotPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txt_password_login" />
+        <TextView
+            android:id="@+id/txtView_forgot_password"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Forgot password?"
+            android:textStyle="bold"/>
 
-    <ProgressBar
-        android:id="@+id/progressBarLogin"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="53dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_singUp" />
+        <Button
+            android:id="@+id/btn_signIn"
+            android:layout_marginTop="40dp"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style"
+            android:drawableRight="@drawable/ic_baseline_send_24"
+            android:text="Sign In"
+            android:textColor="#fff"/>
 
-    <TextView
-        android:id="@+id/txtViewForgotPassword"
-        android:layout_width="116dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="22dp"
-        android:text="Forgot Password?"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxForPassword" />
+        <ProgressBar
+            android:visibility="invisible"
+            android:paddingTop="0dp"
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

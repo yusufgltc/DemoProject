@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.demoproject.ProductsListActivity;
+import com.example.demoproject.Activity.ProductsListActivity;
 import com.example.demoproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,87 +25,74 @@ import java.util.Map;
 public class SingAuth extends AppCompatActivity {
 
     public static final String TAG = "TAG";
-
-    EditText txt_name_singUp,txt_surname_singUp,txt_username_singUp,txt_email_singUp,txt_password_singUp,txt_user_university_singUp,txt_user_departmant_singUp,txt_user_bio_singUp;
-    ImageView imgView_user_singUp;
-    Button singUpBtnCreateAccount;
+    EditText edtText_user_names_sign,edtText_user_email_sign,
+            edtText_user_university_sign,edtText_user_departmant_sign,
+            edtText_user_bio_sign,edtText_user_password_sign;
+    ImageView imgView_backTo_sign,imgView_user_img_sign;
+    Button btn_signUp;
     ProgressBar progressBar;
-
+    //Firebase
     FirebaseAuth firebaseAuth ;
     FirebaseFirestore firebaseFirestore;
     String userID;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup_auth);
 
-        txt_name_singUp = findViewById(R.id.txt_name_singUp);
-        txt_surname_singUp = findViewById(R.id.txt_surname_singUp);
-        txt_username_singUp = findViewById(R.id.txt_username_singUp);
-        txt_email_singUp = findViewById(R.id.txt_email_singUp);
-        txt_password_singUp = findViewById(R.id.txt_password_singUp);
-        txt_user_university_singUp = findViewById(R.id.txt_user_university_singUp);
-        txt_user_departmant_singUp = findViewById(R.id.txt_user_departmant_singUp);
-        txt_user_bio_singUp= findViewById(R.id.txt_user_bio_singUp);
-        imgView_user_singUp = findViewById(R.id.imgView_user_singUp);
-        singUpBtnCreateAccount = findViewById(R.id.singUpBtnCreateAccount);
+        edtText_user_names_sign = findViewById(R.id.edtText_user_names_sign);
+        edtText_user_email_sign = findViewById(R.id.edtText_user_email_sign);
+        edtText_user_university_sign = findViewById(R.id.edtText_user_university_sign);
+        edtText_user_departmant_sign = findViewById(R.id.edtText_user_departmant_sign);
+        edtText_user_bio_sign = findViewById(R.id.edtText_user_bio_sign);
+        edtText_user_password_sign = findViewById(R.id.edtText_user_password_sign);
+        imgView_backTo_sign = findViewById(R.id.imgView_backTo_sign);
+        imgView_user_img_sign = findViewById(R.id.imgView_user_img_sign);
+        btn_signUp= findViewById(R.id.btn_signUp);
         progressBar = findViewById(R.id.progressBar);
-
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+
         if (firebaseAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), ProductsListActivity.class));
             finish();
         }
+        imgView_backTo_sign.setOnClickListener(v -> {
+            Intent backTo = new Intent(SingAuth.this,LoginAuth.class);
+            startActivity(backTo);
+            finish();
+        });
+        btn_signUp.setOnClickListener(v -> {
+            final String nameandsurname = edtText_user_names_sign.getText().toString();
+            final String email = edtText_user_email_sign.getText().toString().trim();
+            String password = edtText_user_password_sign.getText().toString().trim();
+            final String university = edtText_user_university_sign.getText().toString();
+            final String departmant = edtText_user_departmant_sign.getText().toString();
+            final String bio = edtText_user_bio_sign.getText().toString();
 
-
-        singUpBtnCreateAccount.setOnClickListener(v -> {
-
-            final String name = txt_name_singUp.getText().toString();
-            final String surname = txt_surname_singUp.getText().toString();
-            final String username = txt_username_singUp.getText().toString();
-            final String email = txt_email_singUp.getText().toString().trim();
-            String password = txt_password_singUp.getText().toString().trim();
-            final String university = txt_user_university_singUp.getText().toString();
-            final String departmant = txt_user_departmant_singUp.getText().toString();
-            final String bio = txt_user_bio_singUp.getText().toString();
-
-
-            if(TextUtils.isEmpty(username)){
-                txt_username_singUp.setError("Username is required");
+            if(TextUtils.isEmpty(nameandsurname)){
+                edtText_user_names_sign.setError("Username is required");
                 return;
-            }
-
-            if(TextUtils.isEmpty(email)){
-                txt_email_singUp.setError("Email is required");
+            }if(TextUtils.isEmpty(email)){
+                edtText_user_email_sign.setError("Email is required");
                 return;
-            }
-
-            if(TextUtils.isEmpty(password)){
-                txt_password_singUp.setError("Password is required");
+            }if(TextUtils.isEmpty(password)){
+                edtText_user_password_sign.setError("Password is required");
                 return;
             }
             progressBar.setVisibility(View.VISIBLE);
-
             //Register the user in firebase
-
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     Toast.makeText(SingAuth.this, "User Created", Toast.LENGTH_SHORT).show();
                     userID = firebaseAuth.getUid();
                     DocumentReference documentReference = firebaseFirestore.collection("Users").document(userID);
                     Map<String, Object> user = new HashMap<>();
-                    user.put("First Name",name);
-                    user.put("Last Name",surname);
-                    user.put("Username",username);
+                    user.put("First and Name",nameandsurname);
                     user.put("E-mail",email);
                     user.put("University",university);
                     user.put("Departmant",departmant);
                     user.put("Bio",bio);
-
                     documentReference.set(user).addOnSuccessListener(aVoid -> Log.d(TAG, "onSuccess: user profile is created for " + userID));
                     startActivity(new Intent(getApplicationContext(), ProductsListActivity.class));
                     finish();
@@ -115,7 +102,5 @@ public class SingAuth extends AppCompatActivity {
                 }
             });
         });
-
-
     }
 }

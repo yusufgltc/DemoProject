@@ -1,4 +1,4 @@
-package com.example.demoproject;
+package com.example.demoproject.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.demoproject.Adapter.ProductRecyclerAdapter;
+import com.example.demoproject.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -21,12 +23,11 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ProductsListActivity extends AppCompatActivity {
-
     FirebaseFirestore firebaseFirestore;
     RecyclerView recyclerView;
     Dialog dialog;
     ProductRecyclerAdapter productRecyclerAdapter;
-
+    //ArrayList
     ArrayList<String> productTitle;
     ArrayList<String> productCategory;
     ArrayList<String> productImageUrl;
@@ -36,12 +37,9 @@ public class ProductsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // dialog.findViewById... denemeyi unutma
-
+        // dialog.findViewById... try it
         recyclerView = findViewById(R.id.recyclerView);
         dialog = new Dialog(this);
-
         firebaseFirestore = FirebaseFirestore.getInstance();
         //list
         productTitle =new ArrayList<>();
@@ -49,14 +47,8 @@ public class ProductsListActivity extends AppCompatActivity {
         productImageUrl = new ArrayList<>();
 
         getDataFromFirebase();
-
         initializeViews();
-
-
     }
-
-
-
     public void showPopup (View view){
         TextView txtclose;
 
@@ -65,29 +57,21 @@ public class ProductsListActivity extends AppCompatActivity {
         txtclose.setOnClickListener(v -> dialog.dismiss());
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
-
-
     }
-
     private void initializeViews() {
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         productRecyclerAdapter = new ProductRecyclerAdapter(productTitle,productCategory,productImageUrl);
         recyclerView.setAdapter(productRecyclerAdapter);
     }
-
     private void getDataFromFirebase() {
-
         CollectionReference collectionReference = firebaseFirestore.collection("Posts");
         collectionReference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener((value, error) -> {
-
             if(error!=null){
                 Toast.makeText(ProductsListActivity.this, error.getLocalizedMessage(),Toast.LENGTH_LONG).show();
             }
-
             if (value != null){
                 for (DocumentSnapshot snapshot : value.getDocuments()){
                     Map<String,Object> data = snapshot.getData();
-
                     String productTitleFb = (String) data.get("titlePruduct");
                     String productCategoryFb = (String) data.get("spinnerProduct");
                     String productImageUrlFb = (String) data.get("imageUrl");
@@ -95,13 +79,9 @@ public class ProductsListActivity extends AppCompatActivity {
                     productTitle.add(productTitleFb);
                     productCategory.add(productCategoryFb);
                     productImageUrl.add(productImageUrlFb);
-
                     productRecyclerAdapter.notifyDataSetChanged();
-
                 }
             }
-
         });
-
     }
 }

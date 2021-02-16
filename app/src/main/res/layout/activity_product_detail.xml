@@ -15,7 +15,7 @@
 
         android:layout_width="350dp"
         android:layout_height="600dp"
-        android:background="@color/white"
+        android:background="@android:color/white"
         android:orientation="vertical"
         android:padding="5dp"
         android:layout_gravity="center"
@@ -50,7 +50,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Title"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Category"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Upload Date"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <TextView
@@ -80,7 +80,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Quality"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
             <TextView
@@ -90,7 +90,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Description"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
 
