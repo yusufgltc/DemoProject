@@ -20,16 +20,12 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RatingBar;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.demoproject.R;
+import com.example.demoproject.databinding.ActivityUploadProductBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,32 +35,28 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
-
 public class UploadProductActivity extends AppCompatActivity {
+    //binding
+    private ActivityUploadProductBinding binding;
     //req and per codes
     public static final int CAMERA_PERMISSION_CODE = 123;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 103;
-    ImageView imgView_backTo_upload,imageView_product_upload;
-    EditText edtText_product_title_upload,edtText_product_description_upload;
-    RatingBar ratingBar_product_quality_upload;
-    Button btn_signUp;
-    Spinner spinner_product_category;
     String currentPhotoPath;
-    ProgressBar progressBarSign;
     //firebase
     FirebaseFirestore firebaseFirestore; //1 VALUE
     DatabaseReference databaseReference;
     StorageReference storageRef ; //2 IMAGE
     FirebaseStorage firebaseStorage;
+    FirebaseAuth firebaseAuth;
     //spinner and image
     ValueEventListener valueEventListener;
     ArrayAdapter<String> arrayAdapter;
@@ -73,39 +65,33 @@ public class UploadProductActivity extends AppCompatActivity {
     File image;
     Uri photoURI;
     Uri contentUri;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_product);
-        imgView_backTo_upload = findViewById(R.id.imgView_backTo_upload);
-        imageView_product_upload = findViewById(R.id.imageView_product_upload);
-        edtText_product_title_upload = findViewById(R.id.edtText_product_title_upload);
-        edtText_product_description_upload = findViewById(R.id.edtText_product_description_upload);
-        ratingBar_product_quality_upload = findViewById(R.id.ratingBar_product_quality_upload);
-        btn_signUp = findViewById(R.id.btn_signUp);
-        spinner_product_category = findViewById(R.id.spinner_product_category);
-        progressBarSign = findViewById(R.id.progressBarSign);
+        //bar
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_close_24);
+        setTitle("Add Product");
+        //binding
+        binding = ActivityUploadProductBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         //firebase
         firebaseStorage = FirebaseStorage.getInstance();
         storageRef = firebaseStorage.getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference("categories");
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         //spinner
         spinnerDataList = new ArrayList<>();
         arrayAdapter = new ArrayAdapter<String>(UploadProductActivity.this,
                 android.R.layout.simple_spinner_dropdown_item,spinnerDataList);
-        spinner_product_category.setAdapter(arrayAdapter);
-        retriveData();
+        binding.spinnerProductCategory.setAdapter(arrayAdapter);
+        retrieveData();
         //camera
-        imageView_product_upload.setOnClickListener(v -> { camereDialog(); });
-        btn_signUp.setOnClickListener(v -> shareInfo());
-        imgView_backTo_upload.setOnClickListener(v -> {
-            Intent backToProductDetail = new Intent(UploadProductActivity.this,ProductsListActivity.class);
-            startActivity(backToProductDetail);
-        });
+        binding.imageViewProductUpload.setOnClickListener(v -> { cameraDialog(); });
+        binding.btnSignUp.setOnClickListener(v -> shareInfo());
     }
-    private void camereDialog() {
+    private void cameraDialog() {
         String[] options = {"Camera", "Gallery"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose..");
@@ -121,8 +107,8 @@ public class UploadProductActivity extends AppCompatActivity {
         });
         builder.show();
     }
-
     private void shareInfo() {
+        binding.progressBarSign.setVisibility(View.VISIBLE);
         if (contentUri != null){
             UUID uuid = UUID.randomUUID();
             String imageName = "Images/" + uuid + ".jpg";
@@ -130,19 +116,27 @@ public class UploadProductActivity extends AppCompatActivity {
                 StorageReference newReferenceForDownload = FirebaseStorage.getInstance().getReference(imageName);
                 newReferenceForDownload.getDownloadUrl().addOnSuccessListener(uri -> {
                     String downloadUrl = uri.toString();
-                    String titleProduct = String.valueOf(edtText_product_title_upload.getText());
-                    float ratingProduct = ratingBar_product_quality_upload.getRating();
-                    String descriptionProduct = String.valueOf(edtText_product_description_upload.getText());
-                    String spinnerProduct = spinner_product_category.getSelectedItem().toString();
-                    progressBarSign.setVisibility(View.VISIBLE);
-                    HashMap<String,Object> postData = new HashMap<>();
-                    postData.put("date", FieldValue.serverTimestamp());
-                    postData.put("imageUrl",downloadUrl);
-                    postData.put("titlePruduct",titleProduct);
-                    postData.put("ratingProduct",ratingProduct);
-                    postData.put("descriptionProduct", descriptionProduct);
-                    postData.put("spinnerProduct", spinnerProduct);
+                    String titleProduct = String.valueOf(binding.edtTextProductTitleUpload.getText());
+                    float ratingProduct = binding.ratingBarProductQualityUpload.getRating();
+                    //getUserEmail
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    String userEmail = firebaseUser.getEmail();
+                    String descriptionProduct = String.valueOf(binding.edtTextProductDescriptionUpload.getText());
+                    String spinnerProduct = binding.spinnerProductCategory.getSelectedItem().toString();
+                    //time
+                    int month = Calendar.getInstance().get(Calendar.MONTH);
+                    int year = Calendar.getInstance().get(Calendar.YEAR);
+                    int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+                    String total = day + "/" + (month+1) + "/" + year;
 
+                    HashMap<String,Object> postData = new HashMap<>();
+                    postData.put("date", total);
+                    postData.put("imageUrl",downloadUrl);
+                    postData.put("title",titleProduct);
+                    postData.put("rating",ratingProduct);
+                    postData.put("description", descriptionProduct);
+                    postData.put("category", spinnerProduct);
+                    postData.put("email", userEmail);
                     firebaseFirestore.collection("Posts").add(postData).addOnSuccessListener(documentReference ->
                             Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId())).addOnFailureListener(e ->
                             Log.w("TAG", "Error adding document", e));
@@ -150,13 +144,12 @@ public class UploadProductActivity extends AppCompatActivity {
             }).addOnFailureListener(e -> Log.w("TAG", "Error adding document", e));
         }
     }
-    private void retriveData() {
-        valueEventListener = databaseReference.orderByChild("name").addValueEventListener(new ValueEventListener() {
+    private void retrieveData() {
+        valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 for (DataSnapshot item :snapshot.getChildren()){
-                  spinnerDataList.add(item.getValue().toString());
+                  spinnerDataList.add(item.child("name").getValue().toString());
                 }
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -188,24 +181,24 @@ public class UploadProductActivity extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST_CODE) {
            if (resultCode == Activity.RESULT_OK){
                File f = new File(currentPhotoPath);
-               imageView_product_upload.setImageURI(Uri.fromFile(f));
-
+               binding.imageViewProductUpload.setImageURI(Uri.fromFile(f));
                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                contentUri = Uri.fromFile(f);
                mediaScanIntent.setData(contentUri);
                this.sendBroadcast(mediaScanIntent);
            }
         }
-        if (requestCode == GALLERY_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK){
+        if (requestCode == GALLERY_REQUEST_CODE ) {
+            if (resultCode == Activity.RESULT_OK ){
                 contentUri = data.getData();
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 imageFileName = "JPEG_" + timeStamp +"."+getFileExt(contentUri);
                 Log.d("tag","onActivityResult: Gallery Image Uri: " + imageFileName );
-                imageView_product_upload.setImageURI(contentUri);
+                binding.imageViewProductUpload.setImageURI(contentUri);
             }
         }
     }
+
     private String getFileExt(Uri contentUri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();

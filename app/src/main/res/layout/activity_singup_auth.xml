@@ -8,14 +8,6 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imgView_backTo_sign"
-        android:layout_width="25dp"
-        android:layout_height="50dp"
-        android:layout_gravity="left"
-        android:paddingLeft="10dp"
-        android:src="@drawable/ic_baseline_arrow_back_ios_24" />
-
-    <ImageView
         android:id="@+id/imgView_user_img_sign"
         android:src="@drawable/ic_baseline_add_photo_alternate_24"
         android:layout_width="100dp"

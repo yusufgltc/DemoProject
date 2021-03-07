@@ -1,62 +1,58 @@
 package com.example.demoproject.Adapter;
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.demoproject.ProductDetail;
+import com.example.demoproject.Model.Products;
 import com.example.demoproject.R;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
-public class ProductRecyclerAdapter extends RecyclerView.Adapter<ProductRecyclerAdapter.PostHolder> {
-     ArrayList<String> productTitleList;
-     ArrayList<String> productCategoryList;
-     ArrayList<String> productImageUrlList;
-    public ProductRecyclerAdapter(ArrayList<String> productTitle,
-                                  ArrayList<String> productCategory,
-                                  ArrayList<String> productImageUrl) {
-        this.productTitleList = productTitle;
-        this.productCategoryList = productCategory;
-        this.productImageUrlList = productImageUrl;
+public class ProductRecyclerAdapter extends FirestoreRecyclerAdapter<Products,ProductRecyclerAdapter.ProductHolder> {
+    private OnItemClickListener listener;
+    
+    public ProductRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Products> options) {
+        super(options);
+    }
+    @Override
+    protected void onBindViewHolder(@NonNull ProductHolder holder, int position, @NonNull Products model) {
+          holder.txtTitleProduct.setText(model.getTitle());
+          holder.txtCategoryProduct.setText(model.getCategory());
+          Picasso.get().load(model.getImageUrl()).into(holder.imgViewProduct);
     }
     @NonNull
     @Override
-    public PostHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.row_product,parent,false);
-        return new PostHolder(view);
+    public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_product,parent,false);
+        return new ProductHolder(v);
     }
-    @Override
-    public void onBindViewHolder(@NonNull PostHolder holder, int position) {
-        holder.productTitle.setText(productTitleList.get(position));
-        holder.productCategory.setText(productCategoryList.get(position));
-        Picasso.get().load(productImageUrlList.get(position)).into(holder.productImageView);
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), ProductDetail.class);
-           // intent.putExtra();
-            v.getContext().startActivity(intent);
-        });
-    }
-    @Override
-    public int getItemCount() {
-        return productTitleList.size();
-    }
-    class PostHolder extends RecyclerView.ViewHolder{
-        TextView productTitle,productCategory;
-        ImageView productImageView;
-        public PostHolder(@NonNull View itemView) {
+    class ProductHolder extends RecyclerView.ViewHolder{
+        ImageView imgViewProduct;
+        TextView  txtTitleProduct;
+        TextView  txtCategoryProduct;
+
+        @SuppressLint("ResourceType")
+        public ProductHolder(@NonNull View itemView) {
             super(itemView);
-            productTitle = itemView.findViewById(R.id.textView_product_title_row);
-            productCategory = itemView.findViewById(R.id.textView_product_categoryName_row);
-            productImageView = itemView.findViewById(R.id.imageView_product_row);
+            imgViewProduct = itemView.findViewById(R.id.imageView_product_row);
+            txtTitleProduct = itemView.findViewById(R.id.textView_product_title_row);
+            txtCategoryProduct = itemView.findViewById(R.id.textView_product_categoryName_row);
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION &&listener != null){
+                    listener.onItemClick(getSnapshots().getSnapshot(position),position);
+                }
+            });
         }
     }
+    public interface OnItemClickListener{
+        void onItemClick(DocumentSnapshot documentSnapshot,int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){ this.listener = listener; }
 }

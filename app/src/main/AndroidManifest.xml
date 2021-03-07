@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,18 +15,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoProject">
-        <activity android:name=".Auth.SingAuth"></activity>
-        <activity android:name=".Activity.ProductsListActivity" />
-        <activity android:name=".ProductDetail" />
+
         <activity android:name=".Auth.LoginAuth" />
-        <activity android:name=".Activity.UploadProductActivity"
-            tools:ignore="DuplicateActivity">
+        <activity android:name=".Auth.SingAuth"
+            android:parentActivityName=".Auth.LoginAuth" />
+        <activity android:name=".Activity.AppIntroActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.UploadProductActivity"
+            android:parentActivityName=".Activity.ProductsListActivity" />
+        <activity
+            android:name=".Activity.ProductDetail"
+            android:parentActivityName=".Activity.ProductsListActivity" />
+        <activity
+            android:name=".Activity.ProductsListActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileprovider"

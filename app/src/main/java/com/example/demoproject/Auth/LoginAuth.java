@@ -19,53 +19,42 @@ import android.widget.Toast;
 
 import com.example.demoproject.Activity.ProductsListActivity;
 import com.example.demoproject.R;
+import com.example.demoproject.databinding.ActivityLoginAuthBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginAuth extends AppCompatActivity {
-
-    TextView txtView_info,txtView_forgot_password;
-    EditText edtText_userEmail_login,edtText_password_login;
-    Button btn_signIn, btn_join_us,btn_learn_more;
-    ProgressBar progressBar;
+    //binding
+    private ActivityLoginAuthBinding binding;
     //animation
-    LinearLayout l1,l2;
     Animation uptoDown,downtoUp;
     //firebase
     FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_auth);
-        l1 =(LinearLayout) findViewById(R.id.l1);
-        l2 =(LinearLayout) findViewById(R.id.l2);
-        txtView_info = findViewById(R.id.txtView_info);
-        txtView_forgot_password = findViewById(R.id.txtView_forgot_password);
-        edtText_userEmail_login = findViewById(R.id.edtText_userEmail_login);
-        edtText_password_login = findViewById(R.id.edtText_password_login);
-        btn_signIn = findViewById(R.id.btn_signIn);
-        btn_join_us = findViewById(R.id.btn_join_us);
-        btn_learn_more = findViewById(R.id.btn_learn_more);
-        progressBar = findViewById(R.id.progressBar);
+        //binding
+        binding = ActivityLoginAuthBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         //animation
         uptoDown = AnimationUtils.loadAnimation(this,R.anim.up_to_down);
         downtoUp = AnimationUtils.loadAnimation(this,R.anim.down_to_up);
-        l1.setAnimation(uptoDown);
-        l2.setAnimation(downtoUp);
+        binding.l1.setAnimation(uptoDown);
+        binding.l2.setAnimation(downtoUp);
         //firebase
         firebaseAuth = FirebaseAuth.getInstance();
-
-        btn_signIn.setOnClickListener(v -> {
-            String email = edtText_userEmail_login.getText().toString().trim();
-            String password = edtText_password_login.getText().toString().trim();
+        binding.btnSignIn.setOnClickListener(v -> {
+            String email = binding.edtTextUserEmailLogin.getText().toString().trim();
+            String password = binding.edtTextPasswordLogin.getText().toString().trim();
             if(TextUtils.isEmpty(email)){
-                edtText_userEmail_login.setError("Email is required");
+                binding.edtTextUserEmailLogin.setError("Email is required");
                 return;
             }
             if(TextUtils.isEmpty(password)){
-                edtText_password_login.setError("Password is required");
+                binding.edtTextPasswordLogin.setError("Password is required");
                 return;
             }
-            progressBar.setVisibility(View.VISIBLE);
+            binding.progressBar.setVisibility(View.VISIBLE);
             firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     Toast.makeText(LoginAuth.this, "Logged is Successfully", Toast.LENGTH_SHORT).show();
@@ -77,15 +66,15 @@ public class LoginAuth extends AppCompatActivity {
                 }
             });
         });
-        btn_join_us.setOnClickListener(v -> {
+        binding.btnJoinUs.setOnClickListener(v -> {
             startActivity(new Intent(getApplicationContext(), SingAuth.class));
             finish();
         });
-        btn_learn_more.setOnClickListener(v -> {
+        binding.btnLearnMore.setOnClickListener(v -> {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://sdg-tracker.org/quality-education"));
             startActivity(browserIntent);
         });
-        txtView_forgot_password.setOnClickListener(v -> {
+        binding.txtViewForgotPassword.setOnClickListener(v -> {
             final EditText resetMail = new EditText(v.getContext());
             final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
             passwordResetDialog.setTitle("Do you want to reset your password?");
