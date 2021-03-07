@@ -55,10 +55,11 @@ Documentation <br/>
 
 # TR
 
-### 0 Ben kimim ?
+### 0 Biz kimiz ?
 
-Ben Yusuf Gultac,23 from Turkey and live in Warsaw. A second year Computer Engineering undergraduate student at university with an interest in developing. 
-I am also interest in mobile development and technologies.
+Yusuf Gültaç, Warszawa Akademia Finansów i Biznesu Vistula, Computer Engineering, BA, Android Developer ygultac@hotmail.com <br/>
+
+Özkan Çaylı, İzmır Katip Çelebi University, Electrical Electronics Engineer, MA, Machine Learning and AI caylio64@gmail.com <br/>
 
 ### 1. AMAÇ
 
@@ -99,30 +100,15 @@ Recycler View <br/>
 17 Sustainable Development Goals <br/>
 Documentation <br/>
 
-### Ne yaptım ne yapamadım ?
 
-#### Negatif
+![1](https://user-images.githubusercontent.com/62885850/110226171-04aa6180-7efe-11eb-9fe0-17126aab16e5.png)
+![2](https://user-images.githubusercontent.com/62885850/110226173-0542f800-7efe-11eb-925d-ef012eb1cf74.png)
+![3](https://user-images.githubusercontent.com/62885850/110226174-0542f800-7efe-11eb-8a03-074d2c9e6a6d.png)
+![4](https://user-images.githubusercontent.com/62885850/110226175-05db8e80-7efe-11eb-8468-f40899ce3609.png)
+![5](https://user-images.githubusercontent.com/62885850/110226177-06742500-7efe-11eb-9f6b-bd003f362b7a.png)
+![6](https://user-images.githubusercontent.com/62885850/110226178-06742500-7efe-11eb-80b4-0213028d7c3d.png)
+![7](https://user-images.githubusercontent.com/62885850/110226166-02e09e00-7efe-11eb-8510-3fbda3313949.png)
+![8](https://user-images.githubusercontent.com/62885850/110226168-03793480-7efe-11eb-917d-10a75de50ed4.png)
+![9](https://user-images.githubusercontent.com/62885850/110226169-0411cb00-7efe-11eb-92e7-42722ab63490.png)
+![10](https://user-images.githubusercontent.com/62885850/110226170-04aa6180-7efe-11eb-8c7a-9c69791e359b.png)
 
-Çalışır bir uygulama çıkaramadım <br/>
-Uygulamanın yüzde 70 lik kısmı hazır <br/>
-Dizayn yapabilmek için vaktim yetmedi <br/>
-Tek başıma çıkardığım bir uygulama olduğunu için ekip çalışmanın önemini terimin son damlasına kadar hissettim :) <br/>
-Pop up a firebase den istenilen veri gelmiyor <br/>
-Cunsor ile seçim aracı doğru çalışmıyor <br/>
-Model yapısı ile yeni bir structure oluşturulabilir <br/>
-
-#### Pozitif
-Authentication kısmı istenilen şekilde hazır <br/>
-Ürün listesi istenilen şekilde geliyor <br/>
-Adaptör database'den besleniyor <br/>
-Ürün paylaşma kısmı istenilen şekilde çalışıyor <br/>
-
-
-
-
-![1b](https://user-images.githubusercontent.com/62885850/107888426-3347a480-6f1d-11eb-957a-75a864873b4a.png)
-![2b](https://user-images.githubusercontent.com/62885850/107888501-a5b88480-6f1d-11eb-8663-80ccaa902898.png)
-![3b](https://user-images.githubusercontent.com/62885850/107888508-afda8300-6f1d-11eb-80d8-c8c90db1ece5.png)
-![5b](https://user-images.githubusercontent.com/62885850/107888513-b963eb00-6f1d-11eb-9f66-3b4718226a0f.png)
-![6b](https://user-images.githubusercontent.com/62885850/107888519-c2ed5300-6f1d-11eb-8b33-b29e8b858da1.png)
-![7b](https://user-images.githubusercontent.com/62885850/107888525-caacf780-6f1d-11eb-9ed4-1edaa8fdaa02.png)
