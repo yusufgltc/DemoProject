@@ -9,10 +9,11 @@ ygultac@hotmail.com  <br/>
 
 # EN
 
-### 0. Who I am ?
+### 0. Who we are ?
 
-I am Yusuf Gultac,23 from Turkey and live in Warsaw. A second year Computer Engineering undergraduate student at university with an interest in developing. 
-I am also interest in mobile development and technologies.
+Yusuf Gültaç, Warszawa Akademia Finansów i Biznesu Vistula, Computer Engineering, BA, Android Developer ygultac@hotmail.com <br/>
+
+Özkan Çaylı, İzmır Katip Çelebi University, Electrical Electronics Engineer, MA, Machine Learning and AI caylio64@gmail.com <br/>
 
 ### 1. Project Purpose
 
@@ -48,10 +49,16 @@ Picasso <br/>
 Glide library <br/>
 Firebase <br/>
 Recycler View <br/>
+Animation <br/>
 
 #### Source
 17 Sustainable Development Goals <br/>
 Documentation <br/>
+
+### Links
+Animation promotional video : https://www.youtube.com/watch?v=qXxYMxmiHhQ  <br/>
+Application Demo video: https://www.youtube.com/watch?v=vbHhjbTyWpE <br/>
+Documantation : https://drive.google.com/file/d/1AfboSzGrmrIFGjaoT3dAXV3_EM6O28OH/view?usp=sharing <br/>
 
 # TR
 
@@ -95,11 +102,17 @@ Picasso <br/>
 Glide library <br/>
 Firebase <br/>
 Recycler View <br/>
+Animation <br/>
 
 #### Kaynak
 17 Sustainable Development Goals <br/>
 Documentation <br/>
 
+### Linkker
+
+Anismasyon tanıtım videosu : https://www.youtube.com/watch?v=qXxYMxmiHhQ  <br/>
+Application demo videosu : https://www.youtube.com/watch?v=vbHhjbTyWpE <br/>
+Dökümantasyon : https://drive.google.com/file/d/1AfboSzGrmrIFGjaoT3dAXV3_EM6O28OH/view?usp=sharing <br/>
 
 ![1](https://user-images.githubusercontent.com/62885850/110226171-04aa6180-7efe-11eb-9fe0-17126aab16e5.png)
 ![2](https://user-images.githubusercontent.com/62885850/110226173-0542f800-7efe-11eb-925d-ef012eb1cf74.png)
